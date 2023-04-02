@@ -20,11 +20,11 @@ jobs:
           distribution: "temurin"
       - name: Test
         run: ./gradlew clean test
-      - name: Coverage
-        run: ./gradlew createCoverageReport
+      - name: create Coverage Report
+        run: ./gradlew coverageReport
       - uses: actions/upload-artifact@v2
         with:
           name: coverage.html
           path: coverage.html
-      - name: renameCoverageReport
+      - name: rename Coverage Report
         run: ./gradlew renameFile
