@@ -54,6 +54,15 @@ tasks.register('unzipCommandline', Copy) {
     into file(".coverage")
 }
 
+task renameFile {
+    doLast {
+        def sourceFile = file('swagger-coverage-report.html')
+        if (sourceFile.exists()) {
+            sourceFile.renameTo(file('index.html'))
+        }
+    }
+}
+
 tasks.register('coverageReport', Exec) {
     dependsOn('downloadSwagger', 'unzipCommandline')
 

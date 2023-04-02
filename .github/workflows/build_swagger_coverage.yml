@@ -21,8 +21,10 @@ jobs:
       - name: Test
         run: ./gradlew clean test
       - name: Coverage
-        run: ./gradlew coverageReport
+        run: ./gradlew createCoverageReport
       - uses: actions/upload-artifact@v2
         with:
           name: coverage.html
           path: coverage.html
+      - name: renameCoverageReport
+        run: ./gradlew renameFile
