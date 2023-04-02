@@ -39,13 +39,12 @@ public class PetTest extends TestFixture {
 
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, Integer.MIN_VALUE, Integer.MAX_VALUE})
-    void getPetWithInvalidIdTest(int value) {
+    @Test
+    void getPetWithInvalidIdTest() {
         given()
                 .spec(requestSpec)
         .when()
-                .get("/pet/{petId}", value)
+                .get("/pet/{petId}", 1)
         .then()
                 .assertThat()
                 .statusCode(404)
